@@ -126,10 +126,10 @@ public:
     float y = v.quat_y();
     float z = v.quat_z();
 
-    float ret_w = cell(0,0) * w + cell(0,1) * y + cell(0,2) * z + cell(0,3) * z;
-    float ret_x = cell(1,0) * w + cell(1,1) * y + cell(1,2) * z + cell(1,3) * z;
-    float ret_y = cell(2,0) * w + cell(2,1) * y + cell(2,2) * z + cell(2,3) * z;
-    float ret_z = cell(3,0) * w + cell(3,1) * y + cell(3,2) * z + cell(3,3) * z;
+    float ret_w = cell(0,0) * w + cell(0,1) * x + cell(0,2) * y + cell(0,3) * z;
+    float ret_x = cell(1,0) * w + cell(1,1) * x + cell(1,2) * y + cell(1,3) * z;
+    float ret_y = cell(2,0) * w + cell(2,1) * x + cell(2,2) * y + cell(2,3) * z;
+    float ret_z = cell(3,0) * w + cell(3,1) * x + cell(3,2) * y + cell(3,3) * z;
     
     return Vector<4>(ret_w, ret_x, ret_y, ret_z);
   }
