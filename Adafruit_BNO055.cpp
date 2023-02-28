@@ -1,3 +1,5 @@
+// II FOUND THE ANSWER YESSSSSS 
+
 /*!
  * @file Adafruit_BNO055.cpp
  *
@@ -808,6 +810,54 @@ bool Adafruit_BNO055::isFullyCalibrated() {
   default:
     return (system == 3 && gyro == 3 && accel == 3 && mag == 3);
   }
+}
+
+void set16Grange(){
+  adafruit_bno055_opmode_t modeback = _mode;
+    /* Switch to config mode (just in case since this is the default) */
+  setMode(OPERATION_MODE_CONFIG);
+  delay(25);
+
+  /* save selected page ID and switch to page 1 */
+  uint8_t savePageID = read8(BNO055_PAGE_ID_ADDR);
+  write8(BNO055_PAGE_ID_ADDR, 0X01);
+
+  /* set configuration to 16 range */
+  write8(BNO055_ACC_CONFIG_ADDR, REMAP_ACCEL_16G);
+  delay(10);
+
+  /* restore page ID */
+  write8(BNO055_PAGE_ID_ADDR, savePageID);
+
+  /* Set the requested operating mode (see section 3.3) */
+  setMode(modeback);
+  delay(20);
+}
+
+void 
+
+void restoreDefults(){
+
+  setMode(OPERATION_MODE_CONFIG);
+  delay(25);
+  
+
+  write8(BNO055_ACC_CONFIG_ADDR, ACCEL_DEFULT);
+  delay(10);
+
+  write8(BNO055_MAG_CONFIG_ADDR, MAG_DEFULT );
+  delay(10);
+
+  write8(BNO055_GYRO_POWER_CONFIG_ADDR, GYRO_POWER_DEFULT);
+  delay(10);
+
+  write8(BNO055_GYRO_BANDWITH_AND_RANGE_CONFIG_ADDR, GYRO_BANDWITH_AND_RANGE_DEFULT);
+  delay(10);
+
+  setMode(OPERATION_MODE_IMUPLUS);
+  delay(20);
+
+  
 }
 
 /*!

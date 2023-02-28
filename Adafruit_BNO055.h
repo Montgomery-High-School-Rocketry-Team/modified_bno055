@@ -274,6 +274,26 @@ public:
 
   } custom_bno055_accel_g_range_config_t;
 
+  // adresses
+
+  typedef enum{
+    BNO055_ACC_CONFIG_ADDR = 0X08,
+    BNO055_MAG_CONFIG_ADDR = 0X09,
+    BNO055_GYRO_BANDWITH_AND_RANGE_CONFIG_ADDR = 0X0A,
+    BNO055_GYRO_POWER_CONFIG_ADDR = 0X0B,
+
+
+  } custom_bno055_reg_addresses_t;
+
+  typedef enum{
+    ACCEL_DEFULT = 0X0D,
+    GYRO_BANDWITH_AND_RANGE_DEFULT = 0X38,
+    GYRO_POWER_DEFULT = 0X00,
+    MAG_DEFULT = 0X6D,
+
+  } custom_bno055_reg_defults_t;
+
+
 
 // REDO CUZ LIKE ITS ANOTHER BITS IN MORE STUFF WE NEED TO ADD PRIV FIELD OR SMTH.....
 // i might just ignore this an follow the data sheet lol...
