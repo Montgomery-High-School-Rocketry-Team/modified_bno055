@@ -812,7 +812,7 @@ bool Adafruit_BNO055::isFullyCalibrated() {
   }
 }
 
-void set16Grange(){
+void Adafruit_BNO055::set16Grange(){
   adafruit_bno055_opmode_t modeback = _mode;
     /* Switch to config mode (just in case since this is the default) */
 
@@ -840,7 +840,7 @@ void set16Grange(){
 
 }
 
-void set1000dps523HZ(){
+void Adafruit_BNO055::set1000dps523HZ(){
   adafruit_bno055_opmode_t modeback = _mode;
   if (modeback == OPERATION_MODE_ACCGYRO || modeback == OPERATION_MODE_MAGGYRO || modeback == OPERATION_MODE_AMG ){
       /* Switch to config mode (just in case since this is the default) */
@@ -853,8 +853,8 @@ void set1000dps523HZ(){
 
     /* set configuration to  1000 dps and 523hz*/
     //TODO: CHECK
-    // 000
-    write8(BNO055_ACC_CONFIG_ADDR, );
+    // 00 000 001
+    write8(BNO055_GYRO_BANDWITH_AND_RANGE_CONFIG_ADDR, 0X01);
     delay(10);
 
     /* restore page ID */
@@ -866,7 +866,7 @@ void set1000dps523HZ(){
   }
 }
 
-void set16Gand1000HZ(){
+void Adafruit_BNO055::set16Gand1000HZ(){
 
 
   adafruit_bno055_opmode_t modeback = _mode;
@@ -895,9 +895,25 @@ void set16Gand1000HZ(){
 
 }
 
+void Adafruit_BNO055::changeToAccGyro(){
+  setMode(OPERATION_MODE_CONFIG);
+  delay(25);
+  setMode(OPERATION_MODE_ACCGYRO);
+  delay(20);
+}
 
 
-void restoreDefults(){
+void Adafruit_BNO055::changeToIMUPLUS(){
+  setMode(OPERATION_MODE_CONFIG);
+  delay(25);
+  setMode(OPERATION_MODE_IMUPLUS);
+  delay(20);
+}
+
+
+void 
+
+void Adafruit_BNO055::restoreDefults(){
 
   setMode(OPERATION_MODE_CONFIG);
   delay(25);
@@ -926,6 +942,8 @@ void restoreDefults(){
 
   
 }
+
+
 
 /*!
  *  @brief  Enter Suspend mode (i.e., sleep)

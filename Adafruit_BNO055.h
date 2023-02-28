@@ -356,6 +356,14 @@ public:
   void enterSuspendMode();
   void enterNormalMode();
 
+  // custom functions 
+  void restoreDefults();
+  void set16Gand1000HZ();
+  void set1000dps523HZ();
+  void set16Grange();
+  void changeToAccGyro();
+  void changeToIMUPLUS();
+
 private:
   byte read8(adafruit_bno055_reg_t);
   bool readLen(adafruit_bno055_reg_t, byte *buffer, uint8_t len);
