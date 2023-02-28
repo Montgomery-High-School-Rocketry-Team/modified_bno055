@@ -260,6 +260,28 @@ public:
     REMAP_SIGN_P7 = 0x05
   } adafruit_bno055_axis_remap_sign_t;
 
+
+  /** accel config binarys ig **/
+  //0X0C = 12 = 1100 0X0D = 13 = 1101 
+  // follow page 21 and 27 and 53
+
+
+  typedef enum{
+    REMAP_ACCEL_2G = 0x0C,
+    REMAP_ACCEL_4G = 0X0D,
+    REMAP_ACCEL_8G = 0X0E,
+    REMAP_ACCEL_16G = 0X0F,
+
+  } custom_bno055_accel_g_range_config_t;
+
+
+// REDO CUZ LIKE ITS ANOTHER BITS IN MORE STUFF WE NEED TO ADD PRIV FIELD OR SMTH.....
+// i might just ignore this an follow the data sheet lol...
+  // typedef enum{
+  //   REMAP_ACCEL_DATARATE_7_81 = 0x0C,
+
+  // } custom_bno055_accel_data_rate_config_t;
+
   /** A structure to represent revisions **/
   typedef struct {
     uint8_t accel_rev; /**< acceleration rev */
