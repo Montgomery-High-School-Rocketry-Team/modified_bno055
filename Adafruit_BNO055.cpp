@@ -895,6 +895,48 @@ void Adafruit_BNO055::set16Gand1000HZ(){
 
 }
 
+adafruit_bno055_opmode_t Adafruit_BNO055::modee(){
+  return _mode;
+}
+
+uint8_t Adafruit_BNO055::AccConfig(){
+  adafruit_bno055_opmode_t modeback = _mode;
+  setMode(OPERATION_MODE_CONFIG);
+  delay(25);
+  uint8_t savePageID = read8(BNO055_PAGE_ID_ADDR);
+  write8(BNO055_PAGE_ID_ADDR, 0X01);
+
+  uint8_t acc = read8(BNO055_ACC_CONFIG_ADDR);
+
+  write8(BNO055_PAGE_ID_ADDR, savePageID);
+
+    /* Set the requested operating mode (see section 3.3) */
+  setMode(modeback);
+  delay(20);
+
+  return acc;
+}
+
+uint8_t Adafruit_BNO055::GyroConfig(){
+  adafruit_bno055_opmode_t modeback = _mode;
+  setMode(OPERATION_MODE_CONFIG);
+  delay(25);
+  uint8_t savePageID = read8(BNO055_PAGE_ID_ADDR);
+  write8(BNO055_PAGE_ID_ADDR, 0X01);
+
+  uint8_t gyro = read8(BNO055_GYRO_BANDWITH_AND_RANGE_CONFIG_ADDR);
+
+  write8(BNO055_PAGE_ID_ADDR, savePageID);
+
+    /* Set the requested operating mode (see section 3.3) */
+  setMode(modeback);
+  delay(20);
+
+  return gyro;
+}
+
+
+
 void Adafruit_BNO055::changeToAccGyro(){
   setMode(OPERATION_MODE_CONFIG);
   delay(25);

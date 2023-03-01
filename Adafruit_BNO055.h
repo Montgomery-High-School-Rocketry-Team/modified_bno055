@@ -369,6 +369,9 @@ public:
   void set16Grange();
   void changeToAccGyro();
   void changeToIMUPLUS();
+  uint8_t AccConfig();
+  uint8_t GyroConfig();
+  adafruit_bno055_opmode_t modee();
 
 private:
   byte read8(adafruit_bno055_reg_t);
