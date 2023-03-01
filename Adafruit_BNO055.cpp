@@ -911,7 +911,6 @@ void Adafruit_BNO055::changeToIMUPLUS(){
 }
 
 
-void 
 
 void Adafruit_BNO055::restoreDefults(){
 
@@ -982,6 +981,8 @@ bool Adafruit_BNO055::write8(adafruit_bno055_reg_t reg, byte value) {
   uint8_t buffer[2] = {(uint8_t)reg, (uint8_t)value};
   return i2c_dev->write(buffer, 2);
 }
+
+
 
 /*!
  *  @brief  Reads an 8 bit value over I2C

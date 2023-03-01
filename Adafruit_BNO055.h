@@ -226,7 +226,13 @@ public:
     ACCEL_RADIUS_LSB_ADDR = 0X67,
     ACCEL_RADIUS_MSB_ADDR = 0X68,
     MAG_RADIUS_LSB_ADDR = 0X69,
-    MAG_RADIUS_MSB_ADDR = 0X6A
+    MAG_RADIUS_MSB_ADDR = 0X6A,
+
+
+    BNO055_ACC_CONFIG_ADDR = 0X08,
+    BNO055_MAG_CONFIG_ADDR = 0X09,
+    BNO055_GYRO_BANDWITH_AND_RANGE_CONFIG_ADDR = 0X0A,
+    BNO055_GYRO_POWER_CONFIG_ADDR = 0X0B,
   } adafruit_bno055_reg_t;
 
   /** BNO055 power settings */
@@ -276,14 +282,14 @@ public:
 
   // adresses
 
-  typedef enum{
-    BNO055_ACC_CONFIG_ADDR = 0X08,
-    BNO055_MAG_CONFIG_ADDR = 0X09,
-    BNO055_GYRO_BANDWITH_AND_RANGE_CONFIG_ADDR = 0X0A,
-    BNO055_GYRO_POWER_CONFIG_ADDR = 0X0B,
+  // typedef enum{
+  //   BNO055_ACC_CONFIG_ADDR = 0X08,
+  //   BNO055_MAG_CONFIG_ADDR = 0X09,
+  //   BNO055_GYRO_BANDWITH_AND_RANGE_CONFIG_ADDR = 0X0A,
+  //   BNO055_GYRO_POWER_CONFIG_ADDR = 0X0B,
 
 
-  } custom_bno055_reg_addresses_t;
+  // } custom_bno055_reg_addresses_t;
 
   typedef enum{
     ACCEL_DEFULT = 0X0D,
