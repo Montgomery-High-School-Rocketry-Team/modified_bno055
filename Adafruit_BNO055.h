@@ -372,6 +372,7 @@ public:
   uint8_t AccConfig();
   uint8_t GyroConfig();
   adafruit_bno055_opmode_t modee();
+  void set2000dps523HZ();
 
 private:
   byte read8(adafruit_bno055_reg_t);

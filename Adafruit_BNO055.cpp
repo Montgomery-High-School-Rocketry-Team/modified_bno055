@@ -866,6 +866,32 @@ void Adafruit_BNO055::set1000dps523HZ(){
   }
 }
 
+void Adafruit_BNO055::set2000dps523HZ(){
+  adafruit_bno055_opmode_t modeback = _mode;
+  if (modeback == OPERATION_MODE_ACCGYRO || modeback == OPERATION_MODE_MAGGYRO || modeback == OPERATION_MODE_AMG ){
+      /* Switch to config mode (just in case since this is the default) */
+    setMode(OPERATION_MODE_CONFIG);
+    delay(25);
+
+    /* save selected page ID and switch to page 1 */
+    uint8_t savePageID = read8(BNO055_PAGE_ID_ADDR);
+    write8(BNO055_PAGE_ID_ADDR, 0X01);
+
+    /* set configuration to  2000 dps and 523hz*/
+    //TODO: CHECK
+    // 00 000 000
+    write8(BNO055_GYRO_BANDWITH_AND_RANGE_CONFIG_ADDR, 0X00);
+    delay(10);
+
+    /* restore page ID */
+    write8(BNO055_PAGE_ID_ADDR, savePageID);
+
+    /* Set the requested operating mode (see section 3.3) */
+    setMode(modeback);
+    delay(20);
+  }
+}
+
 void Adafruit_BNO055::set16Gand1000HZ(){
 
 
