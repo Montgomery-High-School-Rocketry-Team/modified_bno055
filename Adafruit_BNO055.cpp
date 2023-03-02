@@ -816,7 +816,7 @@ void Adafruit_BNO055::set16Grange(){
   adafruit_bno055_opmode_t modeback = _mode;
     /* Switch to config mode (just in case since this is the default) */
 
-   if (_mode == OPERATION_MODE_ACCGYRO || _mode == OPERATION_MODE_MAGGYRO || _mode == OPERATION_MODE_AMG ){
+   if (_mode == OPERATION_MODE_ACCGYRO || _mode == OPERATION_MODE_MAGGYRO || _mode == OPERATION_MODE_AMG || _mode == OPERATION_MODE_IMU){
 
 
       setMode(OPERATION_MODE_CONFIG);
