@@ -39,7 +39,8 @@
 #define NUM_BNO055_OFFSET_REGISTERS (22)
 
 /** A structure to represent offsets **/
-typedef struct {
+typedef struct
+{
   int16_t accel_offset_x; /**< x acceleration offset */
   int16_t accel_offset_y; /**< y acceleration offset */
   int16_t accel_offset_z; /**< z acceleration offset */
@@ -58,7 +59,8 @@ typedef struct {
 } adafruit_bno055_offsets_t;
 
 /** Operation mode settings **/
-typedef enum {
+typedef enum
+{
   OPERATION_MODE_CONFIG = 0X00,
   OPERATION_MODE_ACCONLY = 0X01,
   OPERATION_MODE_MAGONLY = 0X02,
@@ -78,10 +80,12 @@ typedef enum {
  *  @brief  Class that stores state and functions for interacting with
  *          BNO055 Sensor
  */
-class Adafruit_BNO055 : public Adafruit_Sensor {
+class Adafruit_BNO055 : public Adafruit_Sensor
+{
 public:
   /** BNO055 Registers **/
-  typedef enum {
+  typedef enum
+  {
     /* Page id register definition */
     BNO055_PAGE_ID_ADDR = 0X07,
 
@@ -228,7 +232,6 @@ public:
     MAG_RADIUS_LSB_ADDR = 0X69,
     MAG_RADIUS_MSB_ADDR = 0X6A,
 
-
     BNO055_ACC_CONFIG_ADDR = 0X08,
     BNO055_MAG_CONFIG_ADDR = 0X09,
     BNO055_GYRO_BANDWITH_AND_RANGE_CONFIG_ADDR = 0X0A,
@@ -236,14 +239,16 @@ public:
   } adafruit_bno055_reg_t;
 
   /** BNO055 power settings */
-  typedef enum {
+  typedef enum
+  {
     POWER_MODE_NORMAL = 0X00,
     POWER_MODE_LOWPOWER = 0X01,
     POWER_MODE_SUSPEND = 0X02
   } adafruit_bno055_powermode_t;
 
   /** Remap settings **/
-  typedef enum {
+  typedef enum
+  {
     REMAP_CONFIG_P0 = 0x21,
     REMAP_CONFIG_P1 = 0x24, // default
     REMAP_CONFIG_P2 = 0x24,
@@ -255,7 +260,8 @@ public:
   } adafruit_bno055_axis_remap_config_t;
 
   /** Remap Signs **/
-  typedef enum {
+  typedef enum
+  {
     REMAP_SIGN_P0 = 0x04,
     REMAP_SIGN_P1 = 0x00, // default
     REMAP_SIGN_P2 = 0x06,
@@ -266,13 +272,12 @@ public:
     REMAP_SIGN_P7 = 0x05
   } adafruit_bno055_axis_remap_sign_t;
 
-
   /** accel config binarys ig **/
-  //0X0C = 12 = 1100 0X0D = 13 = 1101 
-  // follow page 21 and 27 and 53
+  // 0X0C = 12 = 1100 0X0D = 13 = 1101
+  //  follow page 21 and 27 and 53
 
-
-  typedef enum{
+  typedef enum
+  {
     REMAP_ACCEL_2G = 0x0C,
     REMAP_ACCEL_4G = 0X0D,
     REMAP_ACCEL_8G = 0X0E,
@@ -288,10 +293,10 @@ public:
   //   BNO055_GYRO_BANDWITH_AND_RANGE_CONFIG_ADDR = 0X0A,
   //   BNO055_GYRO_POWER_CONFIG_ADDR = 0X0B,
 
-
   // } custom_bno055_reg_addresses_t;
 
-  typedef enum{
+  typedef enum
+  {
     ACCEL_DEFULT = 0X0D,
     GYRO_BANDWITH_AND_RANGE_DEFULT = 0X38,
     GYRO_POWER_DEFULT = 0X00,
@@ -299,17 +304,16 @@ public:
 
   } custom_bno055_reg_defults_t;
 
-
-
-// REDO CUZ LIKE ITS ANOTHER BITS IN MORE STUFF WE NEED TO ADD PRIV FIELD OR SMTH.....
-// i might just ignore this an follow the data sheet lol...
+  // REDO CUZ LIKE ITS ANOTHER BITS IN MORE STUFF WE NEED TO ADD PRIV FIELD OR SMTH.....
+  // i might just ignore this an follow the data sheet lol...
   // typedef enum{
   //   REMAP_ACCEL_DATARATE_7_81 = 0x0C,
 
   // } custom_bno055_accel_data_rate_config_t;
 
   /** A structure to represent revisions **/
-  typedef struct {
+  typedef struct
+  {
     uint8_t accel_rev; /**< acceleration rev */
     uint8_t mag_rev;   /**< magnetometer rev */
     uint8_t gyro_rev;  /**< gyroscrope rev */
@@ -318,7 +322,8 @@ public:
   } adafruit_bno055_rev_info_t;
 
   /** Vector Mappings **/
-  typedef enum {
+  typedef enum
+  {
     VECTOR_ACCELEROMETER = BNO055_ACCEL_DATA_X_LSB_ADDR,
     VECTOR_MAGNETOMETER = BNO055_MAG_DATA_X_LSB_ADDR,
     VECTOR_GYROSCOPE = BNO055_GYRO_DATA_X_LSB_ADDR,
@@ -362,11 +367,12 @@ public:
   void enterSuspendMode();
   void enterNormalMode();
 
-  // custom functions 
+  // custom functions
   void restoreDefults();
   void set16Gand1000HZ();
   void set1000dps523HZ();
   void set16Grange();
+  void set4Grange();
   void changeToAccGyro();
   void changeToIMUPLUS();
   uint8_t AccConfig();
